@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicons-->
+    <link rel="icon" type="image/x-icon" href="resources/esc-favicon-ico.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="resources/esc-favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="resources/esc-favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="resources/esc-favicon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="resources/esc-favicon-512x512.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="resources/esc-apple-touch-icon.png"
+    />
+    <!-- Styling -->
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+    <title>[Esc] Hacker Escape Rooms</title>
+</head>
+<body class="body-container body-container--challenges">
+  <header class="header header--no-hero">
+    <div class="header__logo-head-cont">
+      <img
+        src="resources/esc-header-icon.png"
+        alt="ESC"
+        class="header__logo"
+      />
+      <h1 class="header__headline">Hacker Escape Rooms</h1>
+    </div>
+    <button class="hamburger-button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="navigation-dimmer"></div>
+    <nav class="navigation">
+      <ul class="navigation__list">
+        <li class="navigation__item"><a href="#">Play online</a></li>
+        <li class="navigation__item"><a href="#">Play on-site</a></li>
+        <li class="navigation__item"><a href="#">The story</a></li>
+        <li class="navigation__item"><a href="#">Contact us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main-content">
+    <section class="challenges">
+      <h2 class="challenges__headline">Our Challenges</h2>
+      <div class="challenges__filter">
+        <button class="secondary-nav__btn--filter" id="filterToggle" type="button">Filter challenges</button>
+      </div>
+      <div id="cards" class="cards-grid">
+        <article class="card" data-type="online">
+          <img
+            src="resources/hacker-image.png"
+            alt="A hacker at his computer from behind"
+            class="card__image"
+          />
+          <h4 class="card__title">Title of Challenge</h4>
+          <div class="rating-container">
+            <span class="rating">
+              <img src="resources/Star 3.svg" alt="" class="rating__star" />
+              <img src="resources/Star 3.svg" alt="" class="rating__star" />
+              <img src="resources/Star 3.svg" alt="" class="rating__star" />
+              <img src="resources/Star 3.svg" alt="" class="rating__star" />
+              <img
+                src="resources/Star 3 hollow.svg"
+                alt=""
+                class="rating__star--empty"
+              />
+            </span>
+            <span class="card__room-participants">2 participants (networked)</span>
+          </div>
+          <div class="card__description">
+            Praeterea, ex culpa non invenies unum aut non accusatis unum. Et
+            nihil inuitam. Nemo nocere tibi erit, et non inimicos, et
+          </div>
+          <button class="card__button">Take challenge online</button>
+        </article>
+        <article class="card" data-type="on-site">
+          <img
+            src="resources/hacker-image.png"
+            alt="A hacker at his computer from behind"
+            class="card__image"
+          />
+          <h4 class="card__title">Title of room (on-site)</h4>
+          <div class="rating-container">
+            <span class="rating">
+              <img src="resources/Star 3.svg" alt="" class="rating__star" />
+              <img src="resources/Star 3.svg" alt="" class="rating__star" />
+              <img src="resources/Star 3.svg" alt="" class="rating__star" />
+              <img src="resources/Star 3.svg" alt="" class="rating__star" />
+              <img
+                src="resources/Star 3 hollow.svg"
+                alt=""
+                class="rating__star--empty"
+              />
+            </span>
+            <span class="card__room-participants">2-6 participants</span>
+          </div>
+          <div class="card__description">
+            Praeterea, ex culpa non invenies unum aut non accusatis unum. Et
+            nihil inuitam. Nemo nocere tibi erit, et non inimicos, et
+          </div>
+          <button class="card__button">Book this room</button>
+        </article>
+      </div>
+    </section>
+    </main>
+    <footer class="footer">
+      <section class="info">
+        <h5 class="info__header">[Esc] Hacker Escape Rooms</h5>
+        <p class="info__txt">
+          Quodsi haberent magnalia inter potentiam et divitias, et non illam
+          quidem haec eo spectant haec quoque vos omnino desit illud quo solo
+          felicitatis libertatisque perficiuntur.
+        </p>
+      </section>
+      <section class="site-map">
+        <h5 class="site-map__header">Site map</h5>
+        <div>
+          <ul class="site-map__list">
+            <li class="site-map__item">
+              <a href="#" class="site-map__item--link">The Story</a>
+            </li>
+            <li class="site-map__item">
+              <a href="#" class="site-map__item--link">Contact us</a>
+            </li>
+            <li class="site-map__item">
+              <a href="#" class="site-map__item--link">Legal</a>
+            </li>
+          </ul>
+          <ul class="site-map__list">
+            <li class="site-map__item">
+              <a href="#" class="site-map__item--link">Play online</a>
+            </li>
+            <li class="site-map__item">
+              <a href="#" class="site-map__item--link">Play on-site</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="site-map">
+        <h5 class="site-map__header">Follow us on</h5>
+        <ul class="site-map__list">
+          <li class="site-map__item">
+            <a href="#" class="site-map__item--link">Facebook</a>
+          </li>
+          <li class="site-map__item">
+            <a href="#" class="site-map__item--link">Instagram</a>
+          </li>
+          <li class="site-map__item">
+            <a href="#" class="site-map__item--link">Twitter</a>
+          </li>
+        </ul>
+      </section>
+    </footer>
+    <script type="module" src="scripts/index.mjs"></script>
+</body>
+</html>

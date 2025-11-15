@@ -1,0 +1,10 @@
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+*.d.ts
+*.d.ts.map
+*.js.map
+*.mjs.map
+
+node_modules

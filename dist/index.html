@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicons-->
+    <link rel="icon" type="image/x-icon" href="resources/esc-favicon-ico.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="resources/esc-favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="resources/esc-favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="resources/esc-favicon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="resources/esc-favicon-512x512.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="resources/esc-apple-touch-icon.png"
+    />
+    <!-- Styling -->
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+    <title>[Esc] Hacker Escape Rooms</title>
+  </head>
+  <body class="body-container">
+    <header class="header">
+      <div class="header__logo-head-cont">
+        <img
+          src="resources/esc-header-icon.png"
+          alt="ESC"
+          class="header__logo"
+        />
+        <h1 class="header__headline">Hacker Escape Rooms</h1>
+      </div>
+      <input type="checkbox" id="overlay-input" />
+      <label for="overlay-input" class="hamburger-button">
+        <span></span>
+      </label>
+      <div class="navigation-dimmer"></div>
+      <nav class="navigation">
+          <ul class="navigation__list">
+          <li class="navigation__item"><a href="challenges.html?filter=online" target="challengesTab" data-action="online">Play online</a></li>
+          <li class="navigation__item"><a href="challenges.html?filter=onsite" target="challengesTab" data-action="onsite">Play on-site</a></li>
+          <li class="navigation__item"><a href="storypage.html" target="ESCStoryTab" data-action="story">The story</a></li>
+          <li class="navigation__item"><a href="contact.html" target="_self" data-action="contact">Contact us</a></li>
+          </ul>
+      </nav>
+    </header>
+    <main class="main-content">
+      <section class="secondary-nav">
+        <button class="secondary-nav__btn--primary js-challenge-nav" data-type="online" type="button">Online challenges</button>
+        <button class="secondary-nav__btn--secondary js-challenge-nav" data-type="on-site" type="button">
+          On-site challenges
+        </button>
+      </section>
+      <section class="reviews">
+        <article class="reviews__review-item">
+          <img
+            src="resources/image 3-2.png"
+            alt="A reviewers picture"
+            class="reviews__reviewer-image"
+          />
+          <p class="reviews__review-txt">
+            This is a quote about how amazing this place is and how much fun me
+            and my friends had when we tried it
+          </p>
+          <p class="reviews__reviewer-data">
+            John Doe, visited us in September 2021
+          </p>
+        </article>
+        <article class="reviews__review-item">
+          <img
+            src="resources/image 3-2.png"
+            alt="A reviewers picture"
+            class="reviews__reviewer-image"
+          />
+          <p class="reviews__review-txt">
+            This is a quote about how amazing this place is and how much fun me
+            and my friends had when we tried it
+          </p>
+          <p class="reviews__reviewer-data">
+            John Doe, visited us in September 2021
+          </p>
+        </article>
+      </section>
+      <section class="challenges">
+        <h2 class="challenges__headline">Popular challenges right now</h2>
+        <div class="card-container">
+        <!-- Cards gets inserted here from script-->  
+        </div>
+      </section>
+      <section class="secondary-nav">
+        <button class="secondary-nav__btn--primary js-challenge-nav" data-type="online" type="button">Online challenges</button>
+        <button class="secondary-nav__btn--secondary js-challenge-nav" data-type="on-site" type="button">
+          On-site challenges
+        </button>
+      </section>
+      <section class="information">
+        <article class="information__story">
+          <p class="information__story-text">
+            Quodsi haberent magnalia inter potentiam et divitias, et non illam
+            quidem haec eo spectant haec quoque vos omnino desit illud quo solo
+            felicitatis libertatisque perficiuntur.
+          </p>
+          <button data-action="story" class="information__btn--primary-on-dark">Read the full story</button>
+        </article>
+      </section>
+      <section class="booking-container">
+        <article class="booking">
+          <img
+            src="resources/nesa-by-makers-IgUR1iX0mqM-unsplash 1-1.png"
+            alt=""
+            class="booking__info-image"
+          />
+          <div class="booking__info-container">
+            <h3 class="booking__header">
+              Play with your friends or build your team stronger at work
+            </h3>
+            <p class="booking__info-txt">
+              Praeterea, ex culpa non invenies unum aut non accusatis unum. Et
+              nihil inuitam. Nemo nocere tibi erit, et non inimicos, et
+            </p>
+            <button data-action="onsite" class="booking__btn">Book on-site today</button>
+          </div>
+        </article>
+        <article class="booking">
+          <img
+            src="resources/kelly-sikkema-YK0HPwWDJ1I-unsplash 1-1.png"
+            alt=""
+            class="booking__info-image"
+          />
+          <div class="booking__info-container">
+            <h3 class="booking__header">
+              Play online or visit our venue for one of our 25 escape rooms
+            </h3>
+            <p class="booking__info-txt">
+              Praeterea, ex culpa non invenies unum aut non accusatis unum. Et
+              nihil inuitam. Nemo nocere tibi erit, et non inimicos, et
+            </p>
+            <button data-action="see_all" class="booking__btn">See all challenges</button>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer class="footer">
+      <section class="info">
+        <h5 class="info__header">[Esc] Hacker Escape Rooms</h5>
+        <p class="info__txt">
+          Quodsi haberent magnalia inter potentiam et divitias, et non illam
+          quidem haec eo spectant haec quoque vos omnino desit illud quo solo
+          felicitatis libertatisque perficiuntur.
+        </p>
+      </section>
+      <section class="site-map">
+        <h5 class="site-map__header">Site map</h5>
+        <div>
+          <ul class="site-map__list">
+            <li class="site-map__item">
+              <a href="#" class="site-map__item--link">The Story</a>
+            </li>
+            <li class="site-map__item">
+              <a href="#" class="site-map__item--link">Contact us</a>
+            </li>
+            <li class="site-map__item">
+              <a href="#" class="site-map__item--link">Legal</a>
+            </li>
+          </ul>
+          <ul class="site-map__list">
+            <li class="site-map__item">
+              <a href="challenges.html?filter=online" class="site-map__item--link">Play online</a>
+            </li>
+            <li class="site-map__item">
+              <a href="challenges.html?filter=onsite" class="site-map__item--link">Play on-site</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="site-map">
+        <h5 class="site-map__header">Follow us on</h5>
+        <ul class="site-map__list">
+          <li class="site-map__item">
+            <a href="#" class="site-map__item--link">Facebook</a>
+          </li>
+          <li class="site-map__item">
+            <a href="#" class="site-map__item--link">Instagram</a>
+          </li>
+          <li class="site-map__item">
+            <a href="#" class="site-map__item--link">Twitter</a>
+          </li>
+        </ul>
+      </section>
+    </footer>
+    <script type="module" src="scripts/index.mjs"></script>
+  </body>
+</html>

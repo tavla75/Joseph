@@ -1,0 +1,72 @@
+.secondary-nav__btn--filter{
+    @include button-common;
+    @include button-size(large);
+    @include primary-on-dark(large);
+    margin-top: 0;
+    border: 0.15rem solid $color-light-blue;
+    color: $color-light-blue;
+    @include breakpoint($small-to-large) {
+      margin-top: 3rem;
+    }
+  }
+  .challenges__headline{
+    margin-top: 2.5rem;
+    margin-bottom: 0rem;
+  }
+  
+  .challenges__filter{
+    display: flex;
+    justify-content: center;
+    margin: 0rem 0 3rem;
+   }
+  //mobile-first
+  .cards-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1.25rem 2rem;
+  
+    @include breakpoint($small-to-large){
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+        padding: 0 2rem 3rem;
+    }
+    @include breakpoint($large-screen-limit){
+        grid-template-columns: repeat(3,minmax(0,1fr));
+        max-width: $large-screen-max;
+        margin: 0 auto 4rem;
+    }
+    .card{
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+  
+        &__image{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 0.5rem 0.5rem 0 0;
+        }
+        &__description{
+            margin: 1rem 1rem 0;
+        }
+        &__button{
+            margin: 1rem;
+        }
+    }
+    .rating-container{
+        margin: 0.5rem 1rem 0;
+    }
+  }
+  .body-container--challenges .header{
+    height: auto;
+    background-image: none;
+    background-color: $color-white;
+  
+    @include breakpoint($small-to-large){
+        height: auto;
+    }
+  }

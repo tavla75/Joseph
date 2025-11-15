@@ -1,0 +1,853 @@
+@use "sass:map";
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+// Colors used
+$color-red: #e3170a;
+$color-dark-blue: #011827;
+$color-gray: #b6bdb5;
+$color-medium-blue: #36769d;
+$color-light-blue: #8acfe5;
+$color-white: #ffffff;
+
+$button-sizes: (
+  "large": (
+    width: 19.2rem,
+    height: 4rem,
+    fontsize: 1.5rem,
+  ),
+  "medium": (
+    width: 11.3rem,
+    height: 2.7rem,
+    fontsize: 1rem,
+  ),
+);
+
+// Responsive breakpoint
+$small-to-large: 44rem;
+
+$large-screen-limit: 80rem;
+
+$large-screen-max: 100rem;
+
+// Font used in all DOM
+$main-font: "Roboto";
+
+@mixin breakpoint($min-width) {
+  @media screen and (min-width: $min-width) {
+    @content;
+  }
+}
+
+@mixin button-common {
+  margin: 0;
+  font-family: $main-font;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+@mixin button-size($btn-size) {
+  $size-map: map.get($button-sizes, $btn-size);
+  width: map.get($size-map, "width");
+  height: map.get($size-map, "height");
+  font-size: map.get($size-map, "fontsize");
+}
+
+@mixin primary($btn-size) {
+  @include button-common;
+  @include button-size($btn-size);
+  color: $color-white;
+  background-color: $color-red;
+  border: none;
+}
+
+@mixin primary-on-dark($btn-size) {
+  @include button-common;
+  @include button-size($btn-size);
+  color: $color-light-blue;
+  background: none;
+  border: 0.15rem solid $color-light-blue;
+}
+
+@mixin secondary($btn-size) {
+  @include button-common;
+  @include button-size($btn-size);
+  color: $color-dark-blue;
+  background-color: $color-light-blue;
+  border: none;
+}
+
+@mixin link-version($btn-size) {
+  @include button-common;
+  @include button-size($btn-size);
+  border: none;
+  background: none;
+  text-decoration-line: underline;
+  color: $color-medium-blue;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@keyframes tone-bg-in {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.body-container {
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  min-width: 20rem;
+  max-width: 38rem;
+  margin: auto;
+  border: 1px solid lightgray;
+  @include breakpoint($small-to-large) {
+    max-width: $large-screen-max;
+  }
+}
+
+.header {
+  position: sticky;
+  width: 100%;
+  max-width: 38rem;
+  height: 26.2rem;
+  background-color: $color-dark-blue;
+  background-image: url("../resources/hacker-image.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: local;
+  background-size: 100%;
+  overflow: hidden;
+  @include breakpoint($small-to-large) {
+    max-width: $large-screen-max;
+    height: 43rem;
+    background-size: cover;
+    background-position: center calc(100% + 7rem);
+  }
+  @include breakpoint(calc($large-screen-limit + 1rem)) {
+    background-position: center calc(100% + 13rem);
+  }
+
+  &__logo-head-cont {
+    background-color: $color-dark-blue;
+    display: flex;
+    column-gap: 0.8rem;
+    min-height: 8.5rem;
+    align-items: center;
+    padding: 1.8rem;
+    @include breakpoint($small-to-large) {
+      align-items: end;
+      column-gap: 1.6rem;
+    }
+  }
+
+  &__logo {
+    height: 5rem;
+  }
+
+  &__headline {
+    // background-color: chartreuse;
+    max-width: 5rem;
+    font-family: $main-font;
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+    color: $color-white;
+    @include breakpoint($small-to-large) {
+      max-width: fit-content;
+      font-size: 2.5rem;
+      line-height: 3rem;
+    }
+  }
+}
+
+.hamburger-button {
+  position: absolute;
+  right: 1.5rem;
+  top: 2.5rem;
+  z-index: 20;
+  cursor: pointer;
+  // user-select: none;
+  @include breakpoint($small-to-large) {
+    display: none;
+  }
+  span {
+    $line-width: 3rem;
+    $line-height: 0.3rem;
+    $h-multiplier: 2.5;
+    height: $line-height;
+    width: $line-width;
+    border-radius: calc($line-height/2);
+    background-color: white;
+    position: relative;
+    display: block;
+    transition: all 0.2s ease-in-out;
+    &:before {
+      top: -(calc($line-height * $h-multiplier));
+      // visibility: visible;
+    }
+    &:after {
+      top: calc($line-height * $h-multiplier);
+    }
+    &:before,
+    &:after {
+      height: $line-height;
+      width: $line-width;
+      border-radius: calc($line-height/2);
+      background-color: white;
+      position: absolute;
+      content: "";
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
+
+input[type="checkbox"] {
+  $cross-offset: 0.53rem;
+  display: none;
+
+  &:checked ~ .navigation {
+    opacity: 1;
+    scale: 100%;
+    visibility: visible;
+  }
+
+  &:checked ~ .navigation-dimmer {
+    visibility: visible;
+    opacity: 0.5;
+  }
+
+  &:checked ~ .hamburger-button {
+    position: fixed;
+    padding: 1rem 1rem 0 0;
+    &:hover span,
+    span {
+      background: transparent;
+    }
+    span {
+      &:before {
+        transform: rotate(45deg) translate($cross-offset, $cross-offset);
+        opacity: 1;
+      }
+      &:after {
+        transform: rotate(-45deg) translate($cross-offset, -($cross-offset));
+      }
+    }
+  }
+}
+.navigation-dimmer {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9;
+  background-color: $color-white;
+  transition: opacity 0.3s;
+}
+
+.navigation {
+  visibility: hidden;
+  opacity: 0;
+  scale: 90%;
+  height: calc(100vh - 3rem);
+  width: calc(100vw - 3rem);
+  background: $color-dark-blue;
+  box-shadow: 0 0 8rem $color-light-blue;
+  z-index: 10;
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  transition: all 0.2s ease-in 0.1s;
+  // transition: scale 0.3s ease-in 0.15s;
+  @include breakpoint($small-to-large) {
+    $top-padding: 1rem;
+    display: block;
+    position: initial;
+    visibility: visible;
+    z-index: auto;
+    opacity: 1;
+    box-shadow: none;
+    scale: 100%;
+    // padding-top: $top-padding;
+    width: 100%;
+    height: calc($top-padding + 3rem);
+    background-color: $color-dark-blue;
+  }
+
+  &.active {
+    visibility: visible;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.8rem;
+    height: 100vh;
+    padding-left: 0;
+    list-style-type: none;
+    font-family: $main-font;
+    font-weight: 700;
+    font-size: 2.2rem;
+    @include breakpoint($small-to-large) {
+      width: 72%;
+      height: fit-content;
+      margin: auto;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 0;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__item {
+    padding: 1rem;
+    white-space: nowrap;
+    &:hover {
+      border: 1px solid $color-medium-blue;
+      border-radius: 0.8rem 0.4rem 0.8rem 0;
+    }
+    a {
+      text-decoration: none;
+      color: $color-white;
+      &:hover {
+        color: $color-medium-blue;
+      }
+    }
+    @include breakpoint($small-to-large) {
+      &:last-child {
+        &:hover {
+          border: 1px solid $color-white;
+          border-radius: 0.8rem 0.4rem 0.8rem 0;
+        }
+        a {
+          text-decoration: none;
+          color: $color-light-blue;
+          &:hover {
+            color: $color-white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.main-content {
+  // background-color: beige;
+  display: flex;
+  flex-direction: column;
+}
+
+.secondary-nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+  row-gap: 0.5rem;
+  &:first-child {
+    margin: 2.3rem 0 4.2rem;
+    @include breakpoint($small-to-large) {
+      transform: translateY(-50%);
+      margin: 0 0 4.7rem;
+    }
+  }
+ 
+  &:nth-last-child(3) {
+    margin: 2.275rem 0 3.5rem;
+    @include breakpoint($small-to-large) {
+      margin: 4.9rem 0 5.225rem;
+    }
+  }
+
+  @include breakpoint($small-to-large) {
+    height: fit-content;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 1rem;
+  }
+
+  &__btn {
+    &--primary {
+      @include link-version(large);
+      @include breakpoint($small-to-large) {
+        @include primary(large);
+      }
+    }
+
+    &--secondary {
+      @include secondary(large);
+    }
+  }
+}
+
+
+.reviews {
+  // background-color: darkorange;
+  margin: 0 0 6.5rem;
+  display: flex;
+  overflow-x: auto;
+  column-gap: 3.5rem;
+  height: fit-content;
+  padding: 0 1.3rem 1rem;
+  @include breakpoint($small-to-large) {
+    margin: 0 auto 6.5rem;
+    max-width: 80%;
+    min-width: fit-content;
+    column-gap: 1.4rem;
+  }
+
+  &__review-item {
+    // background-color: coral;
+    flex-shrink: 0;
+    display: grid;
+    grid-template-areas:
+      "pic txt"
+      "pic info";
+    grid-template-columns: 4.6rem auto;
+    column-gap: 0.5rem;
+    row-gap: 0.5rem;
+    font-family: $main-font;
+    @include breakpoint($small-to-large) {
+      max-width: 32rem;
+      grid-template-columns: 6.2rem auto;
+      row-gap: 1rem;
+    }
+  }
+
+  &__reviewer-image {
+    grid-area: pic;
+    width: 100%;
+    padding-top: 0.2rem;
+  }
+
+  &__review-txt {
+    grid-area: txt;
+    font-size: 1.5rem;
+    font-style: italic;
+    max-width: 20rem;
+    width: 66vw;
+    min-width: 12rem;
+    @include breakpoint($small-to-large) {
+      max-width: 26rem;
+      text-align: left;
+    }
+  }
+
+  &__reviewer-data {
+    grid-area: info;
+    width: 66vw;
+    min-width: 12rem;
+    font-size: 1.1rem;
+    @include breakpoint($small-to-large) {
+      max-width: 18rem;
+      text-align: left;
+    }
+  }
+}
+
+.challenges {
+  height: fit-content;
+  @include breakpoint($large-screen-limit) {
+    margin: auto;
+  }
+
+  &__headline {
+    font-family: $main-font;
+    font-size: 2rem;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 2.75rem;
+    @include breakpoint($small-to-large) {
+      font-size: 2.2rem;
+      margin-bottom: 5rem;
+    }
+  }
+}
+
+.card-container {
+  display: flex;
+  overflow-x: scroll;
+  column-gap: 2rem;
+  padding-bottom: 0.625rem;
+  padding-left: 10vw;
+  @include breakpoint($small-to-large) {
+    padding: 0 0.2rem 0.625rem;
+  }
+
+  @include breakpoint($large-screen-limit) {
+    margin: auto;
+  }
+}
+
+.card {
+  flex-shrink: 0;
+  background-size: 100%;
+  background-position: top;
+  background-repeat: no-repeat;
+  max-width: 22.7rem;
+  width: 76vw;
+  min-width: 17.9rem;
+  min-height: 27.9rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.6rem rgba($color: black, $alpha: 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__image {
+    width: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  &__title {
+    margin: 0.75rem 0 0 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: $main-font;
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+
+  &__room-participants {
+    font-family: $main-font;
+    font-weight: 400;
+    font-size: 0.9rem;
+  }
+
+  &__description {
+    margin: 1.1rem 1rem 1.8rem;
+    font-family: $main-font;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+  }
+
+  &__button {
+    @include primary(medium);
+    align-self: flex-end;
+    margin: 0 1rem 1rem 0;
+  }
+}
+
+.rating-container {
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.rating {
+  letter-spacing: 0.5rem;
+}
+
+.information {
+  width: 100%;
+
+  &__story {
+    width: 100%;
+    height: fit-content;
+    background-color: $color-dark-blue;
+    padding: 6rem 1.3rem;
+    text-align: center;
+  }
+
+  &__story-text {
+    color: $color-white;
+    font-family: $main-font;
+    font-size: 1.7rem;
+    text-align: center;
+    letter-spacing: 1%;
+    padding-bottom: 3rem;
+    max-width: 38rem;
+    margin: auto;
+    @include breakpoint($small-to-large) {
+    }
+  }
+
+  &__btn--primary-on-dark {
+    @include primary-on-dark(large);
+    margin-top: 0.5rem;
+    @include breakpoint($small-to-large) {
+      margin-top: -0.5rem;
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+.booking {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: $main-font;
+  @include breakpoint($small-to-large) {
+    flex-direction: row;
+    &:last-child {
+      flex-direction: row-reverse;
+      justify-content: start;
+    }
+  }
+
+  &__info-image {
+    width: 100%;
+    @include breakpoint($small-to-large) {
+      flex: 50%;
+    }
+  }
+
+  &__info-container {
+    padding: 1.9rem 1.3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    @include breakpoint($small-to-large) {
+      flex: 50%;
+      padding: 2rem 7rem 4rem;
+    }
+  }
+
+  &__header {
+    font-size: 2rem;
+    padding-bottom: 1.7rem;
+  }
+
+  &__info-txt {
+    font-size: 1.5rem;
+    padding-bottom: 3.1rem;
+  }
+
+  &__btn {
+    @include primary(large);
+  }
+}
+
+.footer {
+  background-color: $color-dark-blue;
+  margin-top: 2rem;
+  gap: 2rem;
+  padding: 4rem 1.3rem;
+  color: $color-white;
+  font-family: $main-font;
+  @include breakpoint($small-to-large) {
+    margin-top: 11rem;
+    display: flex;
+    flex: 100%;
+    padding: 9rem 7rem;
+  }
+}
+
+.info {
+  @include breakpoint($small-to-large) {
+    // flex-grow: 5;
+    flex: 62%;
+  }
+
+  &__header {
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  &__txt {
+    font-size: 1.15rem;
+    line-height: 1.3rem;
+    margin-bottom: 2rem;
+    @include breakpoint($small-to-large) {
+      width: 70%;
+    }
+  }
+}
+
+.site-map {
+  &__header {
+    font-size: 1.15rem;
+    font-weight: bold;
+  }
+
+  &:nth-last-child(2) {
+    @include breakpoint($small-to-large) {
+      flex: 18%;
+    }
+  }
+
+  &:last-child {
+    @include breakpoint($small-to-large) {
+      flex: 20%;
+    }
+  }
+
+  &__list {
+    margin-top: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__item {
+    list-style-type: none;
+    font-weight: normal;
+
+    &--link {
+      text-decoration: none;
+      color: $color-white;
+    }
+  }
+}
+@import "./challenges";
+
+.booking-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.booking-modal {
+  background: $color-white;
+  width: min(56rem, 95vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  font-family: $main-font;
+
+  h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  h4 {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.booking-intro {
+  margin: 0.5rem 0 0.75rem;
+  font-weight: 500;
+}
+
+.booking-status {
+  margin-top: 0.75rem;
+  min-height: 1.4rem;
+}
+
+.booking-times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.booking-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+
+  &--end {
+    justify-content: flex-end;
+  }
+
+  &--center {
+    justify-content: center;
+  }
+}
+
+.booking-form {
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 24rem;
+    margin-bottom: 0.5rem;
+    font-family: $main-font;
+    font-size: 1rem;
+    padding: 0.6rem;
+    border: 1px solid $color-gray;
+    border-radius: 0.35rem;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  &__participants {
+    width: 12rem;
+    text-align: center;
+    margin: 0.25rem 0 0.5rem;
+  }
+}
+
+.booking-submit-status {
+  margin-top: 0.5rem;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+
+#booking-step-1 {
+  display: block;
+}
+
+#booking-step-1 > label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+#booking-step-1 > input[type="date"] {
+  width: 18rem;
+  max-width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid $color-gray;
+  border-radius: 0.35rem;
+  font-family: $main-font;
+}
+
+
+.booking-thanks {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+
+  h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0.5rem 0 0;
+  }
+
+  &__back {
+    color: $color-medium-blue;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+}
