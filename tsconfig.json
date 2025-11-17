@@ -9,6 +9,7 @@
     // See also https://aka.ms/tsconfig/module
     "module": "esnext",
     "target": "esnext",
+    "allowJs": true,
     "types": [],
     "moduleResolution": "bundler",
     // For nodejs:

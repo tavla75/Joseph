@@ -1,0 +1,180 @@
+.booking {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: $main-font;
+  @include breakpoint($small-to-large) {
+    flex-direction: row;
+    &:last-child {
+      flex-direction: row-reverse;
+      justify-content: start;
+    }
+  }
+
+  &__info-image {
+    width: 100%;
+    @include breakpoint($small-to-large) {
+      flex: 50%;
+    }
+  }
+
+  &__info-container {
+    padding: 1.9rem 1.3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    @include breakpoint($small-to-large) {
+      flex: 50%;
+      padding: 2rem 7rem 4rem;
+    }
+  }
+
+  &__header {
+    font-size: 2rem;
+    padding-bottom: 1.7rem;
+  }
+
+  &__info-txt {
+    font-size: 1.5rem;
+    padding-bottom: 3.1rem;
+  }
+
+  &__btn {
+    @include primary(large);
+  }
+}
+
+.booking-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.booking-modal {
+  background: $color-white;
+  width: min(56rem, 95vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  font-family: $main-font;
+
+  h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  h4 {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.booking-intro {
+  margin: 0.5rem 0 0.75rem;
+  font-weight: 500;
+}
+
+.booking-status {
+  margin-top: 0.75rem;
+  min-height: 1.4rem;
+}
+
+.booking-times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.booking-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+
+  &--end {
+    justify-content: flex-end;
+  }
+
+  &--center {
+    justify-content: center;
+  }
+}
+
+.booking-form {
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 24rem;
+    margin-bottom: 0.5rem;
+    font-family: $main-font;
+    font-size: 1rem;
+    padding: 0.6rem;
+    border: 1px solid $color-gray;
+    border-radius: 0.35rem;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  &__participants {
+    width: 12rem;
+    text-align: center;
+    margin: 0.25rem 0 0.5rem;
+  }
+}
+
+.booking-submit-status {
+  margin-top: 0.5rem;
+}
+
+#booking-step-1 {
+  display: block;
+}
+
+#booking-step-1 > label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+#booking-step-1 > input[type="date"] {
+  width: 18rem;
+  max-width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid $color-gray;
+  border-radius: 0.35rem;
+  font-family: $main-font;
+}
+
+.booking-thanks {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+
+  h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0.5rem 0 0;
+  }
+
+  &__back {
+    color: $color-medium-blue;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+}

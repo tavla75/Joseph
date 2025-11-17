@@ -69,5 +69,7 @@ Väl underbyggda val av teknik och struktur
 - tagit bort hacker bilden så den matchar mallen från whimsical. 
 Projektet går ut på att skapa en hemsida för ett fiktivt företag som låter grupper utföra problem-lösning i ett flertal utmaningar, "Rooms"  
   
-  
+  ## Bookning 
+  - Stylade med hjälp av scss så att det ser ut som i whimsical
+  - kopplade så att den hämtar data från api:et 
 <p style="text-align: center"><img src="github_presentation_assets/esc_site_example.png" /></p>
