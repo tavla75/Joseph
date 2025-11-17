@@ -244,4 +244,4 @@ else {
     void init();
 }
 export {};
-// Booking logic moved to ./booking.js
+
